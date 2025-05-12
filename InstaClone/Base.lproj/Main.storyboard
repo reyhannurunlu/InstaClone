@@ -139,6 +139,9 @@
                                     <action selector="uploadButton:" destination="FLm-6k-MZk" eventType="touchUpInside" id="vsg-C2-oD1"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="IWc-x9-QgL">
+                                <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nss-At-EVC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -147,15 +150,18 @@
                             <constraint firstItem="UjP-va-a1q" firstAttribute="leading" secondItem="Nss-At-EVC" secondAttribute="leading" constant="76" id="ANy-VP-1DA"/>
                             <constraint firstItem="UjP-va-a1q" firstAttribute="leading" secondItem="E3R-bo-NrK" secondAttribute="leading" id="Gzu-ck-Tyd"/>
                             <constraint firstItem="Nss-At-EVC" firstAttribute="bottom" secondItem="YqI-85-RZg" secondAttribute="bottom" constant="221" id="Itb-BB-19j"/>
+                            <constraint firstItem="IWc-x9-QgL" firstAttribute="centerX" secondItem="qdd-WE-TlG" secondAttribute="centerX" id="JbL-RV-9Mh"/>
                             <constraint firstItem="E3R-bo-NrK" firstAttribute="centerX" secondItem="YqI-85-RZg" secondAttribute="centerX" id="NsU-Fg-k6A"/>
                             <constraint firstItem="UjP-va-a1q" firstAttribute="trailing" secondItem="E3R-bo-NrK" secondAttribute="trailing" id="gdi-ov-nrC"/>
                             <constraint firstItem="E3R-bo-NrK" firstAttribute="top" secondItem="UjP-va-a1q" secondAttribute="bottom" constant="37" id="h03-YD-IrB"/>
                             <constraint firstItem="UjP-va-a1q" firstAttribute="centerX" secondItem="qdd-WE-TlG" secondAttribute="centerX" id="t7J-P1-JDF"/>
+                            <constraint firstItem="IWc-x9-QgL" firstAttribute="centerY" secondItem="qdd-WE-TlG" secondAttribute="centerY" id="zMX-We-AdU"/>
                             <constraint firstItem="UjP-va-a1q" firstAttribute="top" secondItem="Nss-At-EVC" secondAttribute="top" constant="111" id="zrb-gX-oqO"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="upload" image="square.and.arrow.up.fill" catalog="system" id="Oyc-H8-bit"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="IWc-x9-QgL" id="f7c-rY-vKi"/>
                         <outlet property="buttonUpload" destination="YqI-85-RZg" id="0eE-st-Vab"/>
                         <outlet property="commentTf" destination="E3R-bo-NrK" id="mTT-je-d40"/>
                         <outlet property="image" destination="UjP-va-a1q" id="881-t2-Qjr"/>
@@ -212,37 +218,61 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="63" id="qme-EQ-ALa"/>
                                                     </constraints>
+                                                    <color key="tintColor" systemColor="linkColor"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Like"/>
                                                     <connections>
                                                         <action selector="likeButtonClicked:" destination="wLF-0a-4LK" eventType="touchUpInside" id="BCl-qn-aYs"/>
                                                     </connections>
                                                 </button>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsC-Uq-sNb">
+                                                    <rect key="frame" x="341" y="146" width="42" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYn-b3-Iyd">
+                                                    <rect key="frame" x="335" y="8" width="48" height="35"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="deleteButtonClicked:" destination="wLF-0a-4LK" eventType="touchUpInside" id="bZW-23-CBU"/>
+                                                    </connections>
+                                                </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select" translatesAutoresizingMaskIntoConstraints="NO" id="rsT-0d-vjd">
-                                                    <rect key="frame" x="-54" y="51" width="500" height="215"/>
+                                                    <rect key="frame" x="93" y="56" width="210" height="205"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="215" id="EQx-Kl-vHX"/>
+                                                        <constraint firstAttribute="height" constant="205" id="pxn-O9-VIb"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="XUG-E9-z2g" firstAttribute="top" secondItem="irR-8M-UlW" secondAttribute="top" id="0Px-0P-P21"/>
                                                 <constraint firstItem="XUG-E9-z2g" firstAttribute="trailing" secondItem="jIB-Ax-pmz" secondAttribute="trailing" id="0Yq-GL-D18"/>
+                                                <constraint firstItem="jIB-Ax-pmz" firstAttribute="top" secondItem="rsT-0d-vjd" secondAttribute="bottom" constant="21" id="C6W-j5-o11"/>
+                                                <constraint firstItem="rsT-0d-vjd" firstAttribute="top" secondItem="XaA-Sd-XLo" secondAttribute="topMargin" constant="45" id="Cz0-Uq-ckc"/>
                                                 <constraint firstItem="XUG-E9-z2g" firstAttribute="bottom" secondItem="XaA-Sd-XLo" secondAttribute="bottomMargin" id="JVz-ZT-liA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="XUG-E9-z2g" secondAttribute="trailing" constant="5" id="OUn-IL-UzS"/>
                                                 <constraint firstItem="fwA-9n-E8k" firstAttribute="top" secondItem="XaA-Sd-XLo" secondAttribute="topMargin" constant="11" id="T4g-zW-VOL"/>
-                                                <constraint firstItem="jIB-Ax-pmz" firstAttribute="top" secondItem="rsT-0d-vjd" secondAttribute="bottom" constant="16" id="VP1-e1-tW3"/>
+                                                <constraint firstItem="rYn-b3-Iyd" firstAttribute="trailing" secondItem="TsC-Uq-sNb" secondAttribute="trailing" id="V4j-wE-blG"/>
+                                                <constraint firstItem="rsT-0d-vjd" firstAttribute="leading" secondItem="XaA-Sd-XLo" secondAttribute="leadingMargin" constant="73" id="Vnb-P1-742"/>
+                                                <constraint firstItem="TsC-Uq-sNb" firstAttribute="trailing" secondItem="jIB-Ax-pmz" secondAttribute="trailing" constant="15" id="WoA-fV-Xy1"/>
                                                 <constraint firstItem="fwA-9n-E8k" firstAttribute="leading" secondItem="XaA-Sd-XLo" secondAttribute="leadingMargin" id="bCv-pg-Vv0"/>
-                                                <constraint firstItem="rsT-0d-vjd" firstAttribute="top" secondItem="fwA-9n-E8k" secondAttribute="bottom" constant="8" id="eEW-Aq-2iG"/>
-                                                <constraint firstItem="rsT-0d-vjd" firstAttribute="leading" secondItem="XaA-Sd-XLo" secondAttribute="leadingMargin" constant="-74" id="mZJ-DV-oVc"/>
+                                                <constraint firstItem="rYn-b3-Iyd" firstAttribute="bottom" secondItem="fwA-9n-E8k" secondAttribute="bottom" id="dRG-6U-djk"/>
+                                                <constraint firstItem="rsT-0d-vjd" firstAttribute="centerY" secondItem="TsC-Uq-sNb" secondAttribute="centerY" id="faf-yt-Zur"/>
                                                 <constraint firstItem="jIB-Ax-pmz" firstAttribute="leading" secondItem="XaA-Sd-XLo" secondAttribute="leadingMargin" constant="8" id="sHr-iw-l0Z"/>
+                                                <constraint firstItem="TsC-Uq-sNb" firstAttribute="top" secondItem="XaA-Sd-XLo" secondAttribute="topMargin" constant="135" id="tb7-1P-kTR"/>
                                                 <constraint firstItem="irR-8M-UlW" firstAttribute="leading" secondItem="XaA-Sd-XLo" secondAttribute="leadingMargin" constant="-20" id="wMo-ss-PUX"/>
+                                                <constraint firstItem="rsT-0d-vjd" firstAttribute="centerX" secondItem="jIB-Ax-pmz" secondAttribute="centerX" id="yGR-pl-EH4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="commentLabel" destination="jIB-Ax-pmz" id="CFR-SI-dge"/>
+                                            <outlet property="documentLabel" destination="TsC-Uq-sNb" id="DdK-2a-Rbu"/>
+                                            <outlet property="likeButton" destination="irR-8M-UlW" id="eR0-vR-TWD"/>
                                             <outlet property="likeLabel" destination="XUG-E9-z2g" id="jV2-dA-2Aw"/>
                                             <outlet property="postImage" destination="rsT-0d-vjd" id="R53-lE-ELO"/>
+                                            <outlet property="trashButton" destination="rYn-b3-Iyd" id="9rc-ba-zHf"/>
                                             <outlet property="usernameLabel" destination="fwA-9n-E8k" id="SO9-ux-9KQ"/>
                                         </connections>
                                     </tableViewCell>
@@ -288,6 +318,10 @@
         <image name="homekit" catalog="system" width="128" height="104"/>
         <image name="select" width="500" height="500"/>
         <image name="square.and.arrow.up.fill" catalog="system" width="117" height="128"/>
+        <image name="trash" catalog="system" width="117" height="128"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
